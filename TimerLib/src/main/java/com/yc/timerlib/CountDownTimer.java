@@ -6,7 +6,15 @@ import android.os.Message;
 import android.os.SystemClock;
 import androidx.annotation.NonNull;
 
-
+/**
+ * <pre>
+ *     @author  yangchong
+ *     email  : yangchong211@163.com
+ *     time  :  2020/5/26
+ *     desc  :  自定义倒计时器
+ *     revise:
+ * </pre>
+ */
 public class CountDownTimer {
 
     /**

@@ -1,7 +1,15 @@
 package com.yc.timerlib;
 
-
-public class CountTimeTools {
+/**
+ * <pre>
+ *     @author  yangchong
+ *     email  : yangchong211@163.com
+ *     time  :  2020/5/26
+ *     desc  :  工具类
+ *     revise:
+ * </pre>
+ */
+public final class CountTimeTools {
 
     /**
      * 将毫秒换成00:00:00

@@ -1,7 +1,14 @@
 package com.yc.timerlib;
 
+
 /**
- * 倒计时监听器
+ * <pre>
+ *     @author  yangchong
+ *     email  : yangchong211@163.com
+ *     time  :  2020/5/26
+ *     desc  :  倒计时监听器
+ *     revise:
+ * </pre>
  */
 public interface TimerListener {
 

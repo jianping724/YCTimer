@@ -7,7 +7,15 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import androidx.appcompat.widget.AppCompatTextView;
 
-
+/**
+ * <pre>
+ *     @author  yangchong
+ *     email  : yangchong211@163.com
+ *     time  :  2020/5/26
+ *     desc  :  自定义倒计时器文本
+ *     revise:
+ * </pre>
+ */
 public class TimerTextView extends AppCompatTextView {
 
     public long mCountDownInterval = 1000;
