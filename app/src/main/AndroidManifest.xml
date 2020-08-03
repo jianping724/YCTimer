@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yc.yctimer">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,6 +23,8 @@
         <activity android:name=".ChronometerActivity"/>
         <activity android:name=".MyCountActivity"/>
         <activity android:name=".CountViewActivity"/>
+        <activity android:name=".AnimatorActivity"/>
+        <service android:name=".LoopRequestService" />
     </application>
 
 </manifest>

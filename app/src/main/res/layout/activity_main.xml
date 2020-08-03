@@ -62,4 +62,23 @@
         android:background="@color/colorAccent"
         android:text="6.使用自定义定时器文本控件倒计时"/>
 
+
+    <TextView
+        android:id="@+id/tv_7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:background="@color/colorAccent"
+        android:text="7.开启Service做轮训操作业务"/>
+
+    <TextView
+        android:id="@+id/tv_8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:background="@color/colorAccent"
+        android:text="8.使用动画实现倒计时"/>
+
 </LinearLayout>

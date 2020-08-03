@@ -51,14 +51,19 @@ public class CountDownTimer {
      * 监听listener
      */
     private TimerListener mCountDownListener;
+    /**
+     * 是否创建开始
+     */
+    private boolean isStart;
 
     public CountDownTimer(){
-
+        isStart = true;
     }
 
     public CountDownTimer(long millisInFuture, long countdownInterval) {
         this.mMillisInFuture = millisInFuture;
         this.mCountdownInterval = countdownInterval;
+        isStart = true;
     }
 
     /**
@@ -74,6 +79,10 @@ public class CountDownTimer {
         mHandler.sendMessage(mHandler.obtainMessage(MSG));
         if (mCountDownListener!=null){
             mCountDownListener.onStart();
+            if (isStart){
+                mCountDownListener.onTick(mMillisInFuture);
+                isStart = false;
+            }
         }
     }
 

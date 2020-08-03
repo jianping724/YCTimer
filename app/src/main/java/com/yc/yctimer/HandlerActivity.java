@@ -23,8 +23,8 @@ public class HandlerActivity extends AppCompatActivity implements View.OnClickLi
     private long curTime = 0;
     private boolean isPause = false;
 
-    Handler mHandler = new Handler();
-    Runnable runnable = new Runnable() {
+    private Handler mHandler = new Handler();
+    private Runnable runnable = new Runnable() {
         @Override
         public void run() {
             curTime -=1000;

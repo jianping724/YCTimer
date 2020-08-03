@@ -24,8 +24,6 @@ public class ChronometerActivity extends AppCompatActivity implements View.OnCli
     private static final long MAX_TIME = 120000;
 
 
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +50,6 @@ public class ChronometerActivity extends AppCompatActivity implements View.OnCli
                     chronometer.stop();
                 }
                 Log.e("TAG", "相差时间：" + time);
-
             }
         });
     }

@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.tv_4).setOnClickListener(this);
         findViewById(R.id.tv_5).setOnClickListener(this);
         findViewById(R.id.tv_6).setOnClickListener(this);
+        findViewById(R.id.tv_7).setOnClickListener(this);
+        findViewById(R.id.tv_8).setOnClickListener(this);
     }
 
     @Override
@@ -41,6 +43,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.tv_6:
                 startActivity(new Intent(this,CountViewActivity.class));
+                break;
+            case R.id.tv_7:
+                LoopRequestService.startLoopService(this);
+                break;
+            case R.id.tv_8:
+                startActivity(new Intent(this,AnimatorActivity.class));
                 break;
             default:
                 break;
