@@ -51,6 +51,17 @@
     //恢复暂停
     mCountDownTimer.resume();
     ```
+- 注意在页面销毁的时候
+    ```
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mCountDownTimer!=null){
+            mCountDownTimer.cancel();
+            mCountDownTimer = null;
+        }
+    }
+    ```
 
 
 ### 03.各种倒计时器分析
