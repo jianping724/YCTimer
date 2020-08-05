@@ -2,6 +2,7 @@ package com.yc.yctimer;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -18,8 +19,9 @@ public class CountActivity extends AppCompatActivity implements View.OnClickList
     private TextView mTv3;
     private TextView mTv4;
 
+    final String TAG = "CountDownTimer";
 
-    private static final long MAX_TIME = 120000;
+    private static final long MAX_TIME = 5000;
     private long curTime = 0;
     private boolean isPause = false;
     private CountDownTimer mCountDownTimer;
@@ -39,6 +41,7 @@ public class CountActivity extends AppCompatActivity implements View.OnClickList
         mCountDownTimer = new CountDownTimer(time, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
+                Log.i(TAG, "----倒计时----onTick--"+millisUntilFinished);
                 CountActivity.this.curTime = millisUntilFinished;
                 mTvTime.setText(CountTimeTools.getCountTimeByLong(millisUntilFinished));
                 isPause = false;
@@ -46,6 +49,7 @@ public class CountActivity extends AppCompatActivity implements View.OnClickList
 
             public void onFinish() {
                 mTvTime.setText("完成!");
+                Log.i(TAG, "----倒计时----onFinish");
             }
         };
     }
