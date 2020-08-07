@@ -61,7 +61,9 @@ public class CountDownTimer {
     }
 
     public CountDownTimer(long millisInFuture, long countdownInterval) {
-        this.mMillisInFuture = millisInFuture;
+        long total = millisInFuture + 20;
+        this.mMillisInFuture = total;
+        //this.mMillisInFuture = millisInFuture;
         this.mCountdownInterval = countdownInterval;
         isStart = true;
     }
@@ -74,15 +76,14 @@ public class CountDownTimer {
             throw new RuntimeException("you must set the millisInFuture > 0 or countdownInterval >0");
         }
         mCancelled = false;
-        mStopTimeInFuture = SystemClock.elapsedRealtime() + mMillisInFuture;
+        long elapsedRealtime = SystemClock.elapsedRealtime();
+        mStopTimeInFuture = elapsedRealtime + mMillisInFuture;
+        CountTimeTools.i("start → mMillisInFuture = " + mMillisInFuture + ", seconds = " + mMillisInFuture / 1000 );
+        CountTimeTools.i("start → elapsedRealtime = " + elapsedRealtime + ", → mStopTimeInFuture = " + mStopTimeInFuture);
         mPause = false;
         mHandler.sendMessage(mHandler.obtainMessage(MSG));
         if (mCountDownListener!=null){
             mCountDownListener.onStart();
-            if (isStart){
-                mCountDownListener.onTick(mMillisInFuture);
-                isStart = false;
-            }
         }
     }
 
@@ -151,23 +152,36 @@ public class CountDownTimer {
                     mCurrentMillisLeft = 0;
                     if (mCountDownListener != null) {
                         mCountDownListener.onFinish();
+                        CountTimeTools.i("onFinish → millisLeft = " + millisLeft);
                     }
                 } else if (millisLeft < mCountdownInterval) {
                     mCurrentMillisLeft = 0;
+                    CountTimeTools.i("handleMessage → millisLeft < mCountdownInterval !");
                     // 剩余时间小于一次时间间隔的时候，不再通知，只是延迟一下
                     sendMessageDelayed(obtainMessage(MSG), millisLeft);
                 } else {
                     //有多余的时间
                     long lastTickStart = SystemClock.elapsedRealtime();
+                    CountTimeTools.i("before onTick → lastTickStart = " + lastTickStart);
+                    CountTimeTools.i("before onTick → millisLeft = " + millisLeft + ", seconds = " + millisLeft / 1000 );
                     if (mCountDownListener != null) {
                         mCountDownListener.onTick(millisLeft);
+                        CountTimeTools.i("after onTick → elapsedRealtime = " + SystemClock.elapsedRealtime());
                     }
                     mCurrentMillisLeft = millisLeft;
                     // 考虑用户的onTick需要花费时间,处理用户onTick执行的时间
+                    // 打印这个delay时间，大概是997毫秒
                     long delay = lastTickStart + mCountdownInterval - SystemClock.elapsedRealtime();
+                    CountTimeTools.i("after onTick → delay1 = " + delay);
                     // 特殊情况：用户的onTick方法花费的时间比interval长，那么直接跳转到下一次interval
+                    // 注意，在onTick回调的方法中，不要做些耗时的操作
+                    boolean isWhile = false;
                     while (delay < 0){
                         delay += mCountdownInterval;
+                        isWhile = true;
+                    }
+                    if (isWhile){
+                        CountTimeTools.i("after onTick执行超时 → delay2 = " + delay);
                     }
                     sendMessageDelayed(obtainMessage(MSG), delay);
                 }
@@ -180,7 +194,8 @@ public class CountDownTimer {
      * @param millisInFuture                    毫秒值
      */
     public void setMillisInFuture(long millisInFuture) {
-        this.mMillisInFuture = millisInFuture;
+        long total = millisInFuture + 20;
+        this.mMillisInFuture = total;
     }
 
     /**

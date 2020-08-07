@@ -1,5 +1,7 @@
 package com.yc.timerlib;
 
+import android.util.Log;
+
 /**
  * <pre>
  *     @author  yangchong
@@ -10,6 +12,16 @@ package com.yc.timerlib;
  * </pre>
  */
 public final class CountTimeTools {
+
+    private static final String TAG = "CountDownTimer";
+    private static boolean isLog = true;
+
+    public static void i(String message) {
+        if(isLog){
+            Log.i(TAG, message);
+        }
+    }
+
 
     /**
      * 将毫秒换成00:00:00
