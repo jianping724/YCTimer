@@ -20,13 +20,8 @@ public class MyCountActivity extends AppCompatActivity implements View.OnClickLi
     private TextView mTv3;
     private TextView mTv4;
 
-
-    private static final long MAX_TIME = 60000;
-    private long curTime = 0;
-    private boolean isPause = false;
+    private static final long MAX_TIME = 6000;
     private CountDownTimer mCountDownTimer;
-
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,6 +53,9 @@ public class MyCountActivity extends AppCompatActivity implements View.OnClickLi
             public void onTick(long millisUntilFinished) {
                 Log.d("-------onTick-------","----"+millisUntilFinished);
                 mTvTime.setText(CountTimeTools.getCountTimeByLong(millisUntilFinished));
+                /*for (int i=0 ; i<10000000; i++){
+                    String s = i + "";
+                }*/
             }
         });
     }
