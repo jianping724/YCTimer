@@ -3,6 +3,7 @@
 - 01.实现倒计时的方式
 - 02.使用封装计时器
 - 03.各种倒计时器分析
+- 04.倒计时UI图
 
 
 ### 01.实现倒计时的方式
@@ -13,7 +14,7 @@
 - 03.利用Timer实现定时器
     - 使用Timer + TimerTask + handler方式实现倒计时
 - 04.使用chronometer控件倒计时
-    - 新出的继承TextView组件，里头是使用了mTickRunnable + postDelayed实现倒计时
+    - 新出的继承TextView组件，里头是使用了View.postDelayed + runnable实现倒计时
 - 05.利用动画实现倒计时
     - 这种方式用的比较少，但也是一种思路。主要是设置动画时间，在onAnimationUpdate监听设置倒计时处理
 
@@ -88,3 +89,11 @@
         - 如果你在当前的activity中schedule了一个task，但是没有等到task结束，就按Back键finish了当前的activity，Timer和TimerTask并不会自动cancel或者销毁，它还会在后台运行，此时如果你在task的某个阶段要调起一个控件（比如AlertDialog），而该控制依赖被销毁的activity，那么将会引发crash。
         - 所以建议在页面销毁的时候，将Timer和TimerTask都有cancel结束并且设置成null
         - Timer 的方式实现定时任务，用来做倒计时是没有问题的。但是如果用来执行周期任务，恰好又有多个任务，恰好两个任务之间的时间间隔又比前一个任务执行时间短就会发生定时不准确的现象了。Timer 在执行过程中如果任务跑出了异常，Timer 会停止所有的任务。Timer 执行周期任务时依赖系统时间，系统时间的变化会引起 Timer 任务执行的变化。
+    - [关于timer的源码分析](https://github.com/yangchong211/YCTimer/blob/master/read/04.Timer%E5%92%8CTimerTask.md)
+
+
+
+
+
+
+
